@@ -1,0 +1,9 @@
+Camarhynchus_psittacula_PSIT2
+Certhidea_fusca_CfE5
+Certhidea_olivacea_Co16
+Geospiza_difficilis_DP3
+Geospiza_difficilis_DP9
+Geospiza_difficilis_DW5
+Geospiza_difficilis_DW9
+Geospiza_fortis_F1
+Pinaroloxias_inornata_PIN6

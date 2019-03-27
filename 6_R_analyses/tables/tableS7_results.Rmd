@@ -1,0 +1,45 @@
+---
+title: Finch Model Output Table
+output: word_document
+---
+
+```{r,echo=F}
+suppressMessages(library(rstan))
+simplify_table <- function(x){
+  raw_tab <- summary(x)$summary[1:7,c(1,3,4,8)]
+  row.names(raw_tab) <- c('Intercept','SD_group','Red list','SD_species','Island area',
+                          'Mass','SD_individual')
+  sig <- rep(FALSE,7)
+  for (i in 1:7){
+    if ((raw_tab[i,3]>0&raw_tab[i,4]>0)|(raw_tab[i,3]<0&raw_tab[i,4]<0)){
+      sig[i] <- TRUE
+    }
+  }
+  cbind(as.data.frame(round(raw_tab,2)),sig)
+}
+```
+
+# 8x Coverage
+
+```{r,echo=F}
+load('out_8x.Rdata')
+```
+
+### Heterozygosity
+
+```{r,echo=F}
+knitr::kable(simplify_table(finch_out_het))
+```
+
+### NROH
+
+```{r,echo=F}
+knitr::kable(simplify_table(finch_out_NROH))
+```
+
+### FROH
+
+```{r,echo=F}
+knitr::kable(simplify_table(finch_out_FROH))
+```
+

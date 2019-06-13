@@ -1,1 +1,4 @@
 *.png
+*.Rdata
+*.pdf
+6_R_analyses/data*

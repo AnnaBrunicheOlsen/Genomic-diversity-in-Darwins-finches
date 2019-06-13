@@ -19,7 +19,7 @@ simplify_table <- function(x,coverage){
 gen_fig <- function(object, title){
 
   coverages <- c('16x','12x','8x','4x')
-  outputs <- paste('out_',coverages,'.Rdata',sep='')
+  outputs <- paste('../output/out_',coverages,'.Rdata',sep='')
 
   get_obj <- function(){
     eval(parse(text=object))

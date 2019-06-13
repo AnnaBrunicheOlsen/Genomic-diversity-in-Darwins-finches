@@ -53,3 +53,18 @@ finch_out_FROH = stan(
 
 save(finch_out_het,finch_out_FROH,
      file=outname)
+
+#------------------------------------------------------------------------------
+
+library(lme4)
+library(lmerTest)
+
+raw_data$Red_list_bin <- ifelse(raw_data$Red_list=='least_concern',0,1)
+mod <- lmer(log(heteroAll) ~ Area_z + Mass_z + Red_list_bin 
+            + (1|species) + (1|species_group), 
+            data=raw_data)
+summary(mod)
+
+mod <- lmer(log(heteroAll) ~ Area_z + Mass_z + Red_list_bin + (1|species),
+            data=raw_data)
+summary(mod)

@@ -19,7 +19,8 @@ sample_info <- read_excel(datafile, sheet='DF_info') %>%
          Mass = as.numeric(weight_gram),
          Red_list = ifelse(Red_list == 'least_concern','least_concern',
                            'endangered')) %>%
-  select(Individual,species_group,species,Island,Area,Red_list,diet,Mass,Ne)
+  select(Individual,species_group,species,Island,Area,Red_list,diet,Mass,Ne,
+  depth_of_coverage)
 
 species_info <- sample_info %>%
   group_by(species, Red_list, species_group) %>%
@@ -37,7 +38,8 @@ read_data <- function(sheet){
     rename_all(~sub('rohLenght','rohLength',.x)) %>%
     rename(Individual = PWD) %>%
     #filter(! species %in% c('Tiaris_bicolor', 'Loxigilla_noctis')) %>%
-    select(Individual,rohNumber,rohLength,heteroAll,Froh) %>%
+    mutate(het_snp = het/SNPs) %>%
+    select(Individual,rohNumber,rohLength,heteroAll,Froh,het_snp) %>%
     left_join(sample_info, by='Individual') %>%
     mutate(Area_z = as.numeric(scale(Area)),
            Mass_z = as.numeric(scale(Mass)),

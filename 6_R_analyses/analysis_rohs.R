@@ -34,7 +34,8 @@ rstan_options(auto_write = TRUE)
 options(mc.cores = parallel::detectCores())
 
 #Heterozygosity
-inp_data$y = log(raw_data$heteroAll)
+#inp_data$y = log(raw_data$heteroAll)
+inp_data$y = log(raw_data$het_snp)
 finch_out_het = stan(
       model_code = readChar(model_file, file.info(model_file)$size),
 			data = inp_data, 
@@ -43,15 +44,15 @@ finch_out_het = stan(
       control = list(adapt_delta=0.99))
 
 #Froh
-inp_data$y = log(raw_data$Froh + 0.05)
-finch_out_FROH = stan(
-      model_code = readChar(model_file, file.info(model_file)$size),
-			data = inp_data, 
-			pars = pars,
-      chains = 3, iter = 2000, warmup = 1800, thin = 1,
-      control = list(adapt_delta=0.99))
+#inp_data$y = log(raw_data$Froh + 0.05)
+#finch_out_FROH = stan(
+#      model_code = readChar(model_file, file.info(model_file)$size),
+#			data = inp_data, 
+#			pars = pars,
+#      chains = 3, iter = 2000, warmup = 1800, thin = 1,
+#      control = list(adapt_delta=0.99))
 
-save(finch_out_het,finch_out_FROH,
+save(finch_out_het,#finch_out_FROH,
      file=outname)
 
 #------------------------------------------------------------------------------
@@ -65,6 +66,17 @@ mod <- lmer(log(heteroAll) ~ Area_z + Mass_z + Red_list_bin
             data=raw_data)
 summary(mod)
 
+mod_alt <- lmer(log(het_snp) ~ Area_z + Mass_z + Red_list_bin 
+            + (1|species) + (1|species_group), 
+            data=raw_data)
+summary(mod_alt)
+
 mod <- lmer(log(heteroAll) ~ Area_z + Mass_z + Red_list_bin + (1|species),
             data=raw_data)
 summary(mod)
+
+mod_froh <- lmer(log(Froh+0.05) ~ Area_z + Mass_z + Red_list_bin 
+            + (1|species) + (1|species_group), 
+            data=raw_data)
+
+summary(mod_froh)

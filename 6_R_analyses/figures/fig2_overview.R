@@ -35,7 +35,8 @@ froh <- fig_data %>%
   mutate(Population = factor(Population),
          Population = factor(Population,levels=rev(levels(Population)))) %>%
   ggplot(aes(x=Population,y=Froh,fill=Species,color=Species)) +
-    geom_boxplot(alpha=0.6) +
+    #geom_boxplot(alpha=0.6) +
+    geom_violin(alpha=0.6) +
     scale_fill_manual(values=get_palette("npg",17)) +
     scale_color_manual(values=get_palette("npg",17)) +
     coord_flip() +
@@ -62,7 +63,8 @@ het <- fig_data %>%
   mutate(Population = factor(Population),
          Population = factor(Population,levels=rev(levels(Population)))) %>%
   ggplot(aes(x=Population,y=heteroAll,fill=Species,col=Species)) +
-    geom_boxplot(alpha=0.6) +
+    #geom_boxplot(alpha=0.6) +
+    geom_violin(alpha=0.6) +
     scale_fill_manual(values=get_palette("npg",17)) +
     scale_color_manual(values=get_palette("npg",17)) +
     coord_flip() +
@@ -130,6 +132,6 @@ area <- fig_data %>%
         legend.title = element_text(size=14)) +
   annotate("text",27,4000,label="b)",size=6)
 
-png('fig2_overview.png',height=7,width=10,units='in',res=300)
+png('fig2_overview_violin.png',height=7,width=10,units='in',res=300)
 grid.arrange(size,area,het,froh,ncol=4,widths=c(1.9,1,1,1))
 dev.off()

@@ -33,10 +33,11 @@ library(ggpubr)
 colvals <- get_palette('npg',2)
 
 ch_plot <- raw_data %>%
-  ggplot(aes(x=depth_of_coverage,y=log(heteroAll))) +
+  ggplot(aes(x=log(depth_of_coverage),y=log(heteroAll))) +
   geom_point(col=colvals[1]) +
-  ylab(expression(log(italic(H)))) +
-  xlab('log(Depth of coverage)') +
+  #ylab(expression(log(italic(H)))) +
+  ylab('log(H)') +
+  xlab('log(DOC)') +
   geom_smooth(method='lm',se=F,col=colvals[1]) +
   theme_bw() +
   theme(axis.title = element_text(size=14),
@@ -48,17 +49,18 @@ ch_plot <- raw_data %>%
           axis.line = element_line(colour = "black"),
           legend.position="none",
           legend.title = element_text(size=14)) +
-  annotate("text",30,-5.4,label='italic(r) == -0.18',size=5, parse=T) +
-  annotate("text",30,-5.7,label='italic(p) == 0.01',size=5, parse=T) +
-  annotate("text",5, -5, label='a)',size=5)
+  annotate("text",3.2,-5.4,label='italic(r) == -0.18',size=5, parse=T) +
+  annotate("text",3.2,-5.7,label='italic(p) == 0.01',size=5, parse=T) +
+  annotate("text",1.2, -5, label='a)',size=5)
 
 
 fr_plot <- raw_data %>%
-  ggplot(aes(x=depth_of_coverage,y=log(Froh))) +
-  geom_point(col=colvals[2]) +
-  ylab(expression(log(italic(F)[ROH]))) +
-  xlab('log(Depth of coverage)') +
-  geom_smooth(method='lm',se=F,col=colvals[2]) +
+  ggplot(aes(x=log(depth_of_coverage),y=log(Froh))) +
+  geom_point(col=colvals[1]) +
+  #ylab(expression(log(italic(F)[ROH]))) +
+  ylab('log(Froh)') +
+  xlab('log(DOC)') +
+  geom_smooth(method='lm',se=F,col=colvals[1]) +
   theme_bw() +
   theme(axis.title = element_text(size=14),
           axis.text = element_text(size=12),
@@ -69,9 +71,9 @@ fr_plot <- raw_data %>%
           axis.line = element_line(colour = "black"),
           legend.position="none",
           legend.title = element_text(size=14)) +
-  annotate("text",30,-3,label='italic(r) == 0.13',size=5, parse=T) +
-  annotate("text",30,-3.5,label='italic(p) == 0.07',size=5, parse=T) +
-  annotate("text",5, 0, label='b)',size=5)
+  annotate("text",3.2,-3,label='italic(r) == 0.13',size=5, parse=T) +
+  annotate("text",3.2,-3.5,label='italic(p) == 0.07',size=5, parse=T) +
+  annotate("text",1.2, 0, label='b)',size=5)
 
 tiff('fig_S8.tiff',height=5,width=7,units='in',res=300,compression='lzw')
 grid.arrange(ch_plot, fr_plot, ncol=2)

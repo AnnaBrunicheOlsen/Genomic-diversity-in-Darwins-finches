@@ -27,7 +27,8 @@ pval <- mod1$p.value
 boxpl <- theta %>%
   ggplot(aes(x=Red_list,y=WattersonsThetaMean, fill=Red_list, color=Red_list)) +
   #geom_jitter() +
-  geom_violin(alpha=0.6,draw_quantiles=0.5) +
+  #geom_violin(alpha=0.6,draw_quantiles=0.5) +
+  geom_boxplot(alpha=0.6) +
   scale_fill_manual(values=get_palette("npg",2)) +
   scale_color_manual(values=get_palette("npg",2)) +
   #ylab('log(Neb)') +
@@ -47,4 +48,4 @@ boxpl <- theta %>%
   annotate("text",x=1.5,y=2.5,label=paste('P =',round(pval,2)),size=5.5) #+
   #annotate("text",x=0.6,y=2.5,label="b)",size=6)
 
-ggsave('fig5_wtheta.png',height=7,width=7)
+ggsave('fig5_wtheta.png',height=7,width=4)

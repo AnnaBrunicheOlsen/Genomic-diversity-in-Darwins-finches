@@ -1,7 +1,7 @@
-# Runs-of-homozygosity
-These scripts are developed for the Darwin's Finches Runs-of-Homozygosity project.
+# Project description
+These scripts are developed for the Darwin's Finches genomic diversity and inbreeding project.
 
-Oct 2017
+Oct 2019
 
 Author: Anna Brüniche-Olsen
 

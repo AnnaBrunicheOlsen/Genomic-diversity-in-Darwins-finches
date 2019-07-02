@@ -34,8 +34,8 @@ rstan_options(auto_write = TRUE)
 options(mc.cores = parallel::detectCores())
 
 #Heterozygosity
-#inp_data$y = log(raw_data$heteroAll)
-inp_data$y = log(raw_data$het_snp)
+inp_data$y = log(raw_data$heteroAll)
+#inp_data$y = log(raw_data$het_snp)
 finch_out_het = stan(
       model_code = readChar(model_file, file.info(model_file)$size),
 			data = inp_data, 

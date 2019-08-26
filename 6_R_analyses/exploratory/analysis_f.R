@@ -22,7 +22,7 @@ theta <- cbind(theta,all_info[-6,])
 t.test(Fu_Li_F ~ Red_list_two, data=theta)
 
 library(ggpubr)
-tiff('fig_F_vs_Redlist.tiff', height=7, width=7, units='in', res=300,
+tiff('fig_F_vs_Redlist.tiff', height=7, width=5, units='in', res=300,
      compression='lzw')
 theta[,-1] %>%
   ggplot(aes(x=Red_list_two, y=Fu_Li_F, fill=Red_list_two,

@@ -35,6 +35,7 @@ het <- fig_data %>%
           axis.title.y = element_blank(),
           axis.ticks.y = element_blank(),
           legend.position="none",
+          plot.margin = margin(7,12,7,7),
           legend.title = element_text(size=14)) +
   annotate("text",27,0.005,label="c)",size=6)
 
@@ -78,6 +79,6 @@ area <- fig_data %>%
         legend.title = element_text(size=14)) +
   annotate("text",27,4000,label="b)",size=6)
 
-png('fig2_overview.png',height=7,width=10,units='in',res=300)
+png('fig3_overview.png',height=7,width=10,units='in',res=300)
 grid.arrange(size,area,het,ncol=3,widths=c(1.8,1,1))
 dev.off()

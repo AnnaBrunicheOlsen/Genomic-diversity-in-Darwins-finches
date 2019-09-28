@@ -30,7 +30,7 @@ theta[,-1] %>%
   geom_boxplot(alpha=0.6) +
   scale_fill_manual(values=get_palette('npg',2)) +
   scale_color_manual(values=get_palette('npg',2)) +
-  ylab(expression("Fu's"~italic(F))) +
+  ylab(expression("Fu's"~italic(F[s]))) +
   xlab('Red List status') +
   theme_bw() +
   theme(#axis.title.x=element_blank(),
@@ -43,8 +43,8 @@ theta[,-1] %>%
           legend.position='none',
           strip.background =element_rect(fill="white"),
           strip.text = element_text(size=18)) +
-  annotate('text', 1.5, 1.1, label='italic(t) == -1.29',size=5,parse=T) +
-  annotate('text', 1.5, 1, label='italic(p) == 0.21',size=5,parse=T)
+  #annotate('text', 1.5, 1.1, label='italic(t) == -1.29',size=5,parse=T) +
+  annotate('text', 1.5,-0.8, label='P = 0.21',size=5)
 dev.off()
 
 ####old

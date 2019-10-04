@@ -43,4 +43,4 @@ out <- fig_data %>%
           axis.line = element_line(colour = "black"),
           legend.position='none')
 
-ggsave('fig3_effectsize.png', width=7,height=7)
+ggsave('fig3_effectsize.tiff', width=7,height=7, compression='lzw')

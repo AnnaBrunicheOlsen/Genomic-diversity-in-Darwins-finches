@@ -29,4 +29,4 @@ out <- fig_data %>%
         legend.title = element_text(size=14)) +
   annotate(x=1.5, y=-5,"text", label=pval, size=5)
 
-ggsave('fig4_HvsDecline.png', height=7, width=5)
+ggsave('fig4_HvsDecline.tiff', height=7, width=5,compression='lzw')

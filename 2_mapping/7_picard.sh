@@ -9,8 +9,7 @@
 module purge
 module load bioinfo
 module load picard-tools
-
-#module load samtools
+module load samtools
 
 cd $PBS_O_WORKDIR
 
@@ -29,15 +28,15 @@ PicardCommandLine MarkDuplicates INPUT=out.bam OUTPUT=marked.bam M=metrics.txt
 
 # check coverage
 PicardCommandLine CollectWgsMetrics I=marked.bam O=coverage_marked.txt \
-R=/scratch/snyder/a/abruenic/Darwins_finches/ref.fa
+R=ref.fa
 
 PicardCommandLine BuildBamIndex INPUT=marked.bam
 
-# create reference that reads can be mapped to. Will produce .fai file
-#samtools faidx /scratch/snyder/a/abruenic/Darwins_finches/ref.fa
+# create reference that reads can be mapped to. 
+samtools faidx ref.fa
 
 PicardCommandLine CreateSequenceDictionary \
-reference=/scratch/snyder/a/abruenic/Darwins_finches/ref.fa output=ref.dict
+reference=ref.fa output=ref.dict
 
 cd ..
 

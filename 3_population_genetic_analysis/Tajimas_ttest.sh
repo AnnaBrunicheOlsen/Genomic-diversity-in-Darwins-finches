@@ -19,17 +19,17 @@ do
 cd $LINE
 
 # remove # from first line 
-sed -i -e 's/#//g' theta.thetasWindow_nooverlap.gz.pestPG
+sed -i -e 's/#//g' theta.thetasWindow.gz.pestPG
 
 Rscript /scratch/snyder/a/abruenic/Darwins_finches/Tajimas_D.R
 
 echo $LINE
 
 echo "tajimasD"
-D=$(sed -n '11p' Tajima_results_nonoverlap.txt)
+D=$(sed -n '11p' Tajima_results.txt)
 echo $D
 # print results to file
-Tajima=$(sed -n '6p' Tajima_results_nonoverlap.txt)
+Tajima=$(sed -n '6p' Tajima_results.txt)
 if [[ $Tajima == "alternative hypothesis: true mean is not equal to 0" ]];
 then	
 	echo "true mean not equal to 0"
@@ -38,9 +38,9 @@ else
 fi
 
 echo "FuF"
-F=$(sed -n '23p' Tajima_results_nonoverlap.txt)
+F=$(sed -n '23p' Tajima_results.txt)
 echo $F
-FuF=$(sed -n '18p' Tajima_results_nonoverlap.txt)
+FuF=$(sed -n '18p' Tajima_results.txt)
 if [[ $Tajima == "alternative hypothesis: true mean is not equal to 0" ]];
 then	
 	echo "true mean not equal to 0"
@@ -49,9 +49,9 @@ else
 fi
 
 echo "FuD"
-fD=$(sed -n '35p' Tajima_results_nonoverlap.txt)
+fD=$(sed -n '35p' Tajima_results.txt)
 echo $fD
-FuD=$(sed -n '30p' Tajima_results_nonoverlap.txt)
+FuD=$(sed -n '30p' Tajima_results.txt)
 if [[ $Tajima == "alternative hypothesis: true mean is not equal to 0" ]];
 then	
 	echo "true mean not equal to 0"

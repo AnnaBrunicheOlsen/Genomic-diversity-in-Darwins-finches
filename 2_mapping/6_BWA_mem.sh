@@ -12,7 +12,7 @@ module load bwa
 
 cd $PBS_O_WORKDIR
 
-cat PJRJA301892_remaining_1.txt | while read -r LINE
+cat PJRJA301892 | while read -r LINE
 
 do
 

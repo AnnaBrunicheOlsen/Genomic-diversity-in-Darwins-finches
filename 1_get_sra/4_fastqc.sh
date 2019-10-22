@@ -12,7 +12,7 @@ module load fastqc
 
 cd $PBS_O_WORKDIR
 
-cat PRJNA301892h | while read -r LINE
+cat PRJNA301892 | while read -r LINE
 
 do
 
